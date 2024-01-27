@@ -1,16 +1,14 @@
 import { FormControl, MenuItem, Select } from '@mui/material'
-import React, { useState } from 'react'
 
 const SearchBarFilter = (props) => {
-  const { defaultFilterValue, keys } = props
-  const [filter, setFilter] = useState(defaultFilterValue)
+  const { filters, defaultFilter, handleFilterChange } = props
 
   return (
     <FormControl>
       <Select
-        value={filter}
-        defaultValue={defaultFilterValue}
-        onChange={(e) => setFilter(e.target.value)}
+        value={defaultFilter}
+        defaultValue={defaultFilter}
+        onChange={handleFilterChange}
         MenuProps={{
           MenuListProps: { disablePadding: true }
         }}
@@ -20,9 +18,9 @@ const SearchBarFilter = (props) => {
           },
         }}
       >
-        {keys.map((key) => (
-          <MenuItem key={key} value={key}>
-            {key}
+        {filters.map((filter) => (
+          <MenuItem key={filter} value={filter}>
+            {filter}
           </MenuItem>
         ))}
       </Select>
