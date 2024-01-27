@@ -1,7 +1,7 @@
 import { FormControl, Tooltip } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 
-const SearchIcon = (props) => {
+const SearchBarIcon = (props) => {
   const { iconTitle, iconColor } = props
 
   return (
@@ -19,4 +19,4 @@ const SearchIcon = (props) => {
   )
 }
 
-export default SearchIcon
+export default SearchBarIcon

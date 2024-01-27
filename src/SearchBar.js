@@ -1,33 +1,39 @@
 import { useState, forwardRef } from 'react'
-import { TextField, Tooltip } from '@mui/material'
+import { Box, CircularProgress, FormControl, TextField, Tooltip, colors } from '@mui/material'
 import SearchBarFilter from './Components/SearchBarFilter'
-import SearchIcon from './Components/SearchIcon'
+import SearchBarIcon from './Components/SearchBarIcon'
 
-const MuiSearchBar = forwardRef((props, ref) => {
+const keys = ['']
+const defaultSearchValue = 'tip'
+const iconTitle = 'tip'
+const iconColor = 'blue'
+const loading = false
+
+const SearchBar = forwardRef((props, ref) => {
   const { searchBarTitle } = props
   const [searchTerm, setSearchTerm] = useState('')
   const [focused, isFocused] = useState(false)
 
   const handleSearch = () => {
-
+    const term = searchTerm.trim().toLowerCase()
+    const searchData = data
   }
 
   return (
-    <Tooltip title={isFocused ? searchBarTitle : ''}>
+    <Tooltip title={focused ? 'test' : ''}>
       <TextField
         type='search'
         ref={ref}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         onFocus={() => isFocused(true)}
-        onBlue={() => isFocused(false)}
+        onBlur={() => isFocused(false)}
         onKeyPress={(e) => {
           if (event.key === 'Enter') {
             handleSearch()
           }
         }}
         sx={{
-          width: searchBarWidth,
           '.MuiOutlinedInput-input': {
             marginRight: '12px'
           }
@@ -39,16 +45,25 @@ const MuiSearchBar = forwardRef((props, ref) => {
                 keys={keys}
                 defaultSearchValue={defaultSearchValue}
               />
-              <SearchIcon
-                iconTitle={iconTitle}
-                iconColor={iconColor}
-              />
+              {loading ?
+                (
+                  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <CircularProgress sx={{ scale: '60%' }} />
+                  </Box>
+                ) : (
+                  <SearchBarIcon
+                    iconTitle={iconTitle}
+                    iconColor={iconColor}
+                  />
+                )}
             </Box>
           )
         }}
+        disabled={loading}
+        size='small'
       />
     </Tooltip>
   )
 })
 
-export default MuiSearchBar
+export default SearchBar
