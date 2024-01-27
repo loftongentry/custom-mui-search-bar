@@ -1,20 +1,22 @@
-import { FormControl, Tooltip } from '@mui/material'
+import { FormControl, IconButton, Tooltip } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 
 const SearchBarIcon = (props) => {
-  const { iconTitle, iconColor } = props
+  const { searchIconTip, searchIconColor, handleSearch } = props
 
   return (
     <FormControl>
-      <Tooltip title={iconTitle}>
-        <SearchIcon
-          sx={{
-            '.MuiButtonBase-root:hover &': {
-              color: iconColor
-            },
-          }}
-        />
-      </Tooltip>
+      <IconButton onClick={handleSearch}>
+        <Tooltip title={searchIconTip}>
+          <SearchIcon
+            sx={{
+              '.MuiButtonBase-root:hover &': {
+                color: searchIconColor
+              },
+            }}
+          />
+        </Tooltip>
+      </IconButton>
     </FormControl>
   )
 }
