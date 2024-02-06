@@ -163,4 +163,5 @@ export default SearchBar
  *  9. Error handling for each of the components
  *  10. Improved warning messages
  *  11. Make more values boolean, so not everything has to be specified
+ *  12. (MAYBE) Perform a search into a database using the serach terms rather than data already loaded into the front end
  */
