@@ -18,7 +18,7 @@ const SearchBarFilter = (props) => {
           },
         }}
       >
-        {filters.map((filter) => (
+        {filters?.map((filter) => (
           <MenuItem key={filter} value={filter}>
             {filter}
           </MenuItem>
